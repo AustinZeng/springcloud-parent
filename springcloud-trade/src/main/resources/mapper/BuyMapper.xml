@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.mapper.BuyMapper">
+
+  <resultMap id="BaseResultMap" type="com.spring.model.Buy">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="trans_id" jdbcType="VARCHAR" property="transId" />
+    <result column="channel" jdbcType="TINYINT" property="channel" />
+    <result column="terminal_no" jdbcType="VARCHAR" property="terminalNo" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="amount" jdbcType="VARCHAR" property="amount" />
+    <result column="fee" jdbcType="VARCHAR" property="fee" />
+    <result column="channel_fee" jdbcType="VARCHAR" property="channelFee" />
+    <result column="cash" jdbcType="VARCHAR" property="cash" />
+    <result column="ext_id" jdbcType="VARCHAR" property="extId" />
+    <result column="trans_time" jdbcType="VARCHAR" property="transTime" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="currency" jdbcType="VARCHAR" property="currency" />
+    <result column="strategy" jdbcType="VARCHAR" property="strategy" />
+    <result column="price" jdbcType="VARCHAR" property="price" />
+    <result column="exchange_strategy" jdbcType="TINYINT" property="exchangeStrategy" />
+    <result column="customer_id" jdbcType="VARCHAR" property="customerId" />
+    <result column="exchange_rate" jdbcType="VARCHAR" property="exchangeRate" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="crypto_currency" jdbcType="VARCHAR" property="cryptoCurrency" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, trans_id, channel, terminal_no, address, amount, fee, channel_fee, cash, ext_id, 
+    trans_time, status, remark, currency, strategy, price, exchange_strategy, customer_id, 
+    exchange_rate, update_time, crypto_currency
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_buy
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+</mapper>

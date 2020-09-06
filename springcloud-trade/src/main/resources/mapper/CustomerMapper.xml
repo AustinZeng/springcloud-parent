@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.mapper.CustomerMapper">
+
+  <resultMap id="BaseResultMap" type="com.spring.model.Customer">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="cust_name" jdbcType="VARCHAR" property="custName" />
+    <result column="e_mail" jdbcType="VARCHAR" property="eMail" />
+    <result column="card_type" jdbcType="TINYINT" property="cardType" />
+    <result column="id_card_positive" jdbcType="VARCHAR" property="idCardPositive" />
+    <result column="id_card_obverse" jdbcType="VARCHAR" property="idCardObverse" />
+    <result column="id_card_handheld" jdbcType="VARCHAR" property="idCardHandheld" />
+    <result column="id_passport" jdbcType="VARCHAR" property="idPassport" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="audit_opinion" jdbcType="VARCHAR" property="auditOpinion" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, cust_name, e_mail, card_type, id_card_positive, id_card_obverse, id_card_handheld, 
+    id_passport, status, audit_opinion, create_user, create_time, update_user, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_customer
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+</mapper>

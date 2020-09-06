@@ -1,0 +1,115 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+feign:
+  hystrix:
+    enabled: true
+#hystrix的超时时间
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 15000
+#ribbon的超时时间
+ribbon:
+  ReadTimeout: 12000
+  ConnectTimeout: 3000
+server:
+  port: 8763
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.springcloud.model
+sharding:
+  jdbc:
+    datasource:
+      names: master,salve #,master0salve0,master0slave1,master1,master1slave0,master1slave1
+      master:
+        type: com.alibaba.druid.pool.DruidDataSource
+        url: jdbc:mysql://192.168.1.155:3306/terminal_admin?useUnicode=true&character_set_server=utf8mb4&useSSL=false&serverTimezone=GMT%2B8
+        username: admin
+        password: 123456
+      salve:
+        type: com.alibaba.druid.pool.DruidDataSource
+        url: jdbc:mysql://localhost:3306/terminal_admin?useUnicode=true&character_set_server=utf8mb4&useSSL=false&serverTimezone=GMT%2B8
+        username: root
+        password: 123456
+        #      master0slave1:
+        #        type: com.alibaba.druid.pool.DruidDataSource
+        #       url: jdbc:mysql://localhost:3306/mcspcsharding0s1?useUnicode=true&character_set_server=utf8mb4&useSSL=false&serverTimezone=GMT%2B8
+        #       username: root
+      #       password: root
+    config:
+      masterslave: # 配置读写分离
+        load-balance-algorithm-type: round_robin # 配置从库选择策略，提供轮询与随机，这里选择用轮询//random 随机 //round_robin 轮询
+        name: db
+        master-data-source-name: master
+        slave-data-source-names: salve
+      props:
+        sql:
+          show: true #是否显示sharding-jdbc的sql路由
+        #      sharding:
+        #        tables:
+        #          sys_user:
+        #           actual-nodes: master.sys_user${0..1}
+        #            database-strategy:
+        #             inline:
+        #                sharding-column: id
+        #                algorithm-expression: master$->{id % 2}
+        #            table-strategy:
+        #              inline:
+        #                sharding-column: id
+        #                algorithm-expression: sys_user$->{id % 2}
+      #        binding-tables: sys_user  # 多个时逗号隔开
+#        broadcast-tables: mc_master   #广播表
+#        master-slave-rules:
+#          ms0:
+#            master-data-source-name: master0
+#            slave-data-source-names: master0salve0,master0slave1
+#          ms1:
+#            master-data-source-name: master1
+#            slave-data-source-names: master1slave0,master1slave1
+
+spring:
+  application:
+    name: trade
+  redis:
+    password: 123456
+    jedis:
+      pool:
+        #最大连接数
+        max-active: 1024
+        #最大阻塞等待时间(负数表示没限制)
+        max-wait: 20000
+        #最大空闲
+        max-idle: 200
+        #最小空闲
+        min-idle: 10
+    sentinel:
+      master: mymaster
+      nodes: 192.168.1.158:26379,192.168.1.154:16001,192.168.1.154:16002
+#    host: 192.168.1.154
+#    port: 6379
+#    password: 123456
+rocketmq:
+  name-server: 192.168.1.154:9876;192.168.1.158:9876
+  producer:
+    group: my_trade
+    retry-times-when-send-async-failed: 0
+    send-msg-timeout: 10000
+    compress-msg-body-over-howmuch: 4096
+    max-message-size: 4194304
+    retry-another-broker-when-not-store-ok: false
+    retry-times-when-send-failed: 2
+
+#  devtools:
+#    restart:
+#      enabled: true  #设置开启热部署
+#      additional-paths: src/main/java #重启目录
+#日志配置
+log:
+  path: /home/log/trade

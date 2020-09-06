@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.mapper.DeviceMapper">
+
+  <resultMap id="BaseResultMap" type="com.spring.model.Device">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="terminal_no" jdbcType="VARCHAR" property="terminalNo" />
+    <result column="device_name" jdbcType="VARCHAR" property="deviceName" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="desc" jdbcType="VARCHAR" property="desc" />
+    <result column="upload_time" jdbcType="VARCHAR" property="uploadTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, terminal_no, device_name, status, desc, upload_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_device
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+</mapper>

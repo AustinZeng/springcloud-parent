@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.mapper.TerminalSettingMapper">
+
+  <resultMap id="BaseResultMap" type="com.spring.model.TerminalSetting">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="terminal_no" jdbcType="VARCHAR" property="terminalNo" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="salt" jdbcType="VARCHAR" property="salt" />
+    <result column="merchant_name" jdbcType="VARCHAR" property="merchantName" />
+    <result column="hotline" jdbcType="VARCHAR" property="hotline" />
+    <result column="e_mail" jdbcType="VARCHAR" property="eMail" />
+    <result column="buy_transaction_fee" jdbcType="VARCHAR" property="buyTransactionFee" />
+    <result column="buy_single_fee" jdbcType="VARCHAR" property="buySingleFee" />
+    <result column="sell_transaction_fee" jdbcType="VARCHAR" property="sellTransactionFee" />
+    <result column="sell_single_fee" jdbcType="VARCHAR" property="sellSingleFee" />
+    <result column="rate" jdbcType="VARCHAR" property="rate" />
+    <result column="min_need_bitcoin" jdbcType="VARCHAR" property="minNeedBitcoin" />
+    <result column="min_need_cash" jdbcType="VARCHAR" property="minNeedCash" />
+    <result column="is_send" jdbcType="TINYINT" property="isSend" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="hot_wallet" jdbcType="TINYINT" property="hotWallet" />
+    <result column="currency" jdbcType="VARCHAR" property="currency" />
+    <result column="sell_type" jdbcType="TINYINT" property="sellType" />
+    <result column="exchange" jdbcType="TINYINT" property="exchange" />
+    <result column="limit_cash" jdbcType="VARCHAR" property="limitCash" />
+    <result column="kyc_url" jdbcType="VARCHAR" property="kycUrl" />
+    <result column="exchange_strategy" jdbcType="TINYINT" property="exchangeStrategy" />
+    <result column="rate_source" jdbcType="TINYINT" property="rateSource" />
+    <result column="kyc_enable" jdbcType="TINYINT" property="kycEnable" />
+    <result column="crypto_settings" jdbcType="VARCHAR" property="cryptoSettings" />
+    <result column="way" jdbcType="TINYINT" property="way" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.spring.model.TerminalSetting">
+    <result column="channel_param" jdbcType="LONGVARCHAR" property="channelParam" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, terminal_no, password, salt, merchant_name, hotline, e_mail, buy_transaction_fee, 
+    buy_single_fee, sell_transaction_fee, sell_single_fee, rate, min_need_bitcoin, min_need_cash, 
+    is_send, status, create_time, update_time, hot_wallet, currency, sell_type, exchange, 
+    limit_cash, kyc_url, exchange_strategy, rate_source, kyc_enable, crypto_settings, 
+    way
+  </sql>
+  <sql id="Blob_Column_List">
+    channel_param
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_terminal_setting
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+</mapper>

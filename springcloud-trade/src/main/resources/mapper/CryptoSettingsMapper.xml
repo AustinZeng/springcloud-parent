@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.mapper.CryptoSettingsMapper">
+  <resultMap id="BaseResultMap" type="com.spring.model.CryptoSettings">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="virtual_currency" jdbcType="TINYINT" property="virtualCurrency" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="exchange_strategy" jdbcType="TINYINT" property="exchangeStrategy" />
+    <result column="exchange" jdbcType="TINYINT" property="exchange" />
+    <result column="hot_wallet" jdbcType="TINYINT" property="hotWallet" />
+    <result column="confirmations" jdbcType="TINYINT" property="confirmations" />
+    <result column="rate_source" jdbcType="TINYINT" property="rateSource" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="buy_transaction_fee" jdbcType="DECIMAL" property="buyTransactionFee" />
+    <result column="buy_single_fee" jdbcType="DECIMAL" property="buySingleFee" />
+    <result column="min_need_cash" jdbcType="DECIMAL" property="minNeedCash" />
+    <result column="sell_transaction_fee" jdbcType="DECIMAL" property="sellTransactionFee" />
+    <result column="sell_single_fee" jdbcType="DECIMAL" property="sellSingleFee" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.spring.model.CryptoSettings">
+    <result column="channel_param" jdbcType="LONGVARCHAR" property="channelParam" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, virtual_currency, status, exchange_strategy, exchange, hot_wallet, confirmations, 
+    rate_source, price, buy_transaction_fee, buy_single_fee, min_need_cash, sell_transaction_fee, 
+    sell_single_fee, create_user, create_time, update_user, update_time
+  </sql>
+  <sql id="Blob_Column_List">
+    channel_param
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_crypto_settings
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+</mapper>

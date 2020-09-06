@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.mapper.OrderMapper">
+
+  <resultMap id="BaseResultMap" type="com.spring.model.Order">
+    <id column="trans_id" jdbcType="VARCHAR" property="transId" />
+    <result column="order_id" jdbcType="VARCHAR" property="orderId" />
+    <result column="size" jdbcType="VARCHAR" property="size" />
+    <result column="product_id" jdbcType="VARCHAR" property="productId" />
+    <result column="side" jdbcType="VARCHAR" property="side" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="created_at" jdbcType="VARCHAR" property="createdAt" />
+    <result column="fill_fees" jdbcType="VARCHAR" property="fillFees" />
+    <result column="filled_size" jdbcType="VARCHAR" property="filledSize" />
+    <result column="executed_value" jdbcType="VARCHAR" property="executedValue" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="message" jdbcType="VARCHAR" property="message" />
+    <result column="funds" jdbcType="VARCHAR" property="funds" />
+    <result column="terminal_no" jdbcType="VARCHAR" property="terminalNo" />
+    <result column="price" jdbcType="VARCHAR" property="price" />
+    <result column="create_time" jdbcType="VARCHAR" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="crypto_currency" jdbcType="VARCHAR" property="cryptoCurrency" />
+    <result column="currency" jdbcType="VARCHAR" property="currency" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    trans_id, order_id, size, product_id, side, type, created_at, fill_fees, filled_size, 
+    executed_value, status, message, funds, terminal_no, price, create_time, update_time, 
+    crypto_currency, currency
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_order
+    where trans_id = #{transId,jdbcType=VARCHAR}
+  </select>
+</mapper>
