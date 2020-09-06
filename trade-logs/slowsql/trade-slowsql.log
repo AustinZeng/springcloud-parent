@@ -1,4 +1,0 @@
-INFO  2020-09-05 08:42:40.768 [restartedMain] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor.logTo Line:225 -Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-INFO  2020-09-05 08:45:17.711 [restartedMain] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor.logTo Line:225 -Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-INFO  2020-09-05 08:53:02.471 [restartedMain] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor.logTo Line:225 -Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-INFO  2020-09-05 08:55:12.355 [restartedMain] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor.logTo Line:225 -Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
