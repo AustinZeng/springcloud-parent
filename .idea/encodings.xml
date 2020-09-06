@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/springcloud-eureka" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springcloud-eureka/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springcloud-gateway" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springcloud-gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springcloud-inventory" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springcloud-inventory/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springcloud-trade" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springcloud-trade/src/main/java" charset="UTF-8" />
+  </component>
+</project>
