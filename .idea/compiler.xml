@@ -7,10 +7,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="springcloud-eureka" />
         <module name="springcloud-inventory" />
-        <module name="springcloud-parent" />
         <module name="springcloud-trade" />
+        <module name="springcloud-parent" />
+        <module name="springcloud-eureka" />
         <module name="springcloud-gateway" />
       </profile>
     </annotationProcessing>
