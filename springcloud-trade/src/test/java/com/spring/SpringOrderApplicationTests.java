@@ -24,6 +24,7 @@ public class SpringOrderApplicationTests {
 	@Test
 	public void contextLoads() {
 
+		System.out.println("开始测试");
 
        /*User user = userService.query(10);
         System.out.println(user.getAccount());*/
