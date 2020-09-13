@@ -25,7 +25,7 @@ public class SpringOrderApplicationTests {
 	public void contextLoads() {
 
 		System.out.println("开始测试");
-
+		System.out.println("分支");
        /*User user = userService.query(10);
         System.out.println(user.getAccount());*/
 
